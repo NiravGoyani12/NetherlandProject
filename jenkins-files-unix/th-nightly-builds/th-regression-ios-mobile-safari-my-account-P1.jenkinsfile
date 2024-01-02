@@ -1,0 +1,38 @@
+properties([
+        [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '10', numToKeepStr: '10']],
+        pipelineTriggers([
+            cron('30 3 * * 3')
+        ])
+])
+
+node {
+
+        def microSoftTeamsWebhookUrl = "https://pvhcorp.webhook.office.com/webhookb2/124a2a6a-92a4-46c5-ad06-c2d44171a6cd@50ccd526-f6e9-4d12-8d35-391b59f63cd6/IncomingWebhook/5f37598f301349b2a089fd5a5c0eabaa/96bb192c-3d67-4d80-b882-92210a27dd48"
+        def runner = "10"
+        def driverName = "browserstack-ios-dynamic"
+        def envStr = "TEST_NAME=TH_Safari_iOS_My_Account_Regression_P1 Brand=th DriverName=${driverName} Platform=mobile DatabaseName=db0-live Site=devtestp DefaultLocale=uk SessionIdleTimeout=60 DriverPoolSize=${runner}"
+
+        // 15 mins
+        Integer buildTimeoutMinutes = 15
+        def runTags = "--tags \"@FullRegression and @Mobile and @Safari and @P1 and (@UnifiedMyAccount or @Authentication or @PPL) and not (@ExcludeDB0 or @ExcludeTH or @Analytics or @OnlyEmulator)\""
+
+        stage('Check out') {
+                checkout scm
+        }
+
+        def setupStages = load 'pipeline-scripts-unix/setup.groovy'
+        def testRunStates = load 'pipeline-scripts-unix/test-run.groovy'
+        def xrayStages = load 'pipeline-scripts-unix/reports/x-ray-report.groovy'
+        def msTeams = load 'pipeline-scripts-unix/reports/ms-teams-report.groovy'
+        def email = load 'pipeline-scripts-unix/reports/email-report.groovy'
+
+        setupStages.initProject(null, null)
+
+        setupStages.buildProject()
+
+        setupStages.startBrowserStackLocal(driverName)
+
+        testRunStates.runIntegrationTest(runner, 'prod', runTags, envStr, true, microSoftTeamsWebhookUrl, false, true, true, "TH Mobile Safari iOS My Account P1 Regression - ", msTeams, email, buildTimeoutMinutes)
+
+        xrayStages.generateXrayReport(runTags, envStr, null, null)
+}

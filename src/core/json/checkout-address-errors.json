@@ -1,0 +1,650 @@
+{
+  "AT": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "E-Mail ist erforderlich.",
+      "error1": "Vorname ist erforderlich.",
+      "error2": "Nachname ist erforderlich.",
+      "error3": "Adresszeile 1 ist erforderlich.",
+      "error4": "Stadt ist erforderlich.",
+      "error5": "Postleitzahl ist erforderlich."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Sorry, leider scheint das keine gültige E-Mail-Adresse zu sein",
+      "error1": "Bitte gib Deinen Vornamen ein",
+      "error2": "Bitte gib Deinen Nachnamen ein",
+      "error3": "Bitte gib Deine Stadt ein",
+      "error4": "Bitte geben Sie eine gültige Postleitzahl ein (z. B. 1234)"
+    }
+  },
+  "BE": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "E-mail is verplicht.",
+      "error1": "Voornaam is verplicht.",
+      "error2": "Achternaam is verplicht.",
+      "error3": "Straat is verplicht.",
+      "error4": "Plaats is verplicht.",
+      "error5": "Postcode is verplicht."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Sorry, dit is geen geldig e-mailadres",
+      "error1": "Voer je voornaam in",
+      "error2": "Voer je achternaam in",
+      "error3": "Voer je woonplaats in",
+      "error4": "Voer een geldige postcode in (bijv. 1234)"
+    }
+  },
+  "BE_FR": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "Adresse e-mail obligatoire.",
+      "error1": "Prénom obligatoire.",
+      "error2": "Nom obligatoire.",
+      "error3": "Adresse ligne 1 obligatoire.",
+      "error4": "Ville obligatoire.",
+      "error5": "Code postal obligatoire."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Désolé, on dirait bien que cette adresse e-mail n’est pas valide...",
+      "error1": "Veuillez saisir votre prénom",
+      "error2": "Veuillez saisir votre nom",
+      "error3": "Veuillez saisir votre ville de résidence",
+      "error4": "Veuillez saisir un code postal valide (ex. 1234)"
+    }
+  },
+  "BG": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Postcode is required."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Please enter a valid postcode (e.g. 1234)"
+    }
+  },
+  "CH": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "E-Mail ist erforderlich.",
+      "error1": "Vorname ist erforderlich.",
+      "error2": "Nachname ist erforderlich.",
+      "error3": "Adresszeile 1 ist erforderlich.",
+      "error4": "Stadt ist erforderlich.",
+      "error5": "Postleitzahl ist erforderlich."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Sorry, leider scheint das keine gültige E-Mail-Adresse zu sein",
+      "error1": "Bitte gib Deinen Vornamen ein",
+      "error2": "Bitte gib Deinen Nachnamen ein",
+      "error3": "Bitte gib Deine Stadt ein",
+      "error4": "Bitte geben Sie eine gültige Postleitzahl ein (z. B. 1234)"
+    }
+  },
+  "CH_FR": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "Adresse e-mail obligatoire.",
+      "error1": "Prénom obligatoire.",
+      "error2": "Nom obligatoire.",
+      "error3": "Adresse ligne 1 obligatoire.",
+      "error4": "Ville obligatoire.",
+      "error5": "Code postal obligatoire."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Désolé, on dirait bien que cette adresse e-mail n’est pas valide...",
+      "error1": "Veuillez saisir votre prénom",
+      "error2": "Veuillez saisir votre nom",
+      "error3": "Veuillez saisir votre ville de résidence",
+      "error4": "Veuillez saisir un code postal valide (ex. 1234)"
+    }
+  },
+  "CH_IT": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "Inserisci una e-mail.",
+      "error1": "Inserisci un nome.",
+      "error2": "Inserisci un cognome.",
+      "error3": "Inserisci un indirizzo nella prima linea.",
+      "error4": "Inserisci una città.",
+      "error5": "Inserisci il codice postale."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Hey, questo non sembra un indirizzo e-mail",
+      "error1": "Inserisci il tuo nome",
+      "error2": "Inserisci il tuo cognome",
+      "error3": "Inserisci la tua città",
+      "error4": "Inserire un codice postale valido (ad es. 1234)"
+    }
+  },
+  "CZ": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 123 45)"
+    }
+  },
+  "DE": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "E-Mail ist erforderlich.",
+      "error1": "Vorname ist erforderlich.",
+      "error2": "Nachname ist erforderlich.",
+      "error3": "Adresszeile 1 ist erforderlich.",
+      "error4": "Postleitzahl ist erforderlich.",
+      "error5": "Stadt ist erforderlich."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Sorry, leider scheint das keine gültige E-Mail-Adresse zu sein",
+      "error1": "Bitte gib Deinen Vornamen ein",
+      "error2": "Bitte gib Deinen Nachnamen ein",
+      "error3": "Bitte geben Sie eine gültige Postleitzahl ein (z. B. 12345)",
+      "error4": "Bitte gib Deine Stadt ein"
+    }
+  },
+  "DE_EN": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Postcode is required.",
+      "error5": "Town/City is required."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please enter a valid postcode (e.g. 12345)",
+      "error4": "Please fill in your town/city"
+    }
+  },
+  "DK": {
+    "mandatoryFieldsCount": 7,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required.",
+      "error7": "Phone number is required."
+    },
+    "invalidErrorsCount": 6,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 1234)",
+      "error6": "Sorry, that doesn't look like a phone number"
+    }
+  },
+  "EE": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 12345)"
+    }
+  },
+  "ES": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "Es necesario introducir uncorreo electrónico.",
+      "error1": "Es necesario introducir un nombre.",
+      "error2": "Es necesario introducir un apellido.",
+      "error3": "Es necesario completar la línea 1 de la dirección.",
+      "error4": "Es necesario introducir una ciudad.",
+      "error5": "Es necesario introducir un código postal."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Vaya, esto no parece una dirección de email",
+      "error1": "Introduce tu nombre",
+      "error2": "Introduce tus apellidos",
+      "error3": "Introduce tu ciudad",
+      "error4": "Provincia no válida - debe ser conforme a las reglas de validación",
+      "error5": "Por favor, introduce un código postal válido (e.g. 12345)"
+    }
+  },
+  "FI": {
+    "mandatoryFieldsCount": 7,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required.",
+      "error7": "Phone number is required."
+    },
+    "invalidErrorsCount": 6,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 1234)",
+      "error6": "Sorry, that doesn't look like a phone number"
+    }
+  },
+  "FR": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "Adresse e-mail obligatoire.",
+      "error1": "Prénom obligatoire.",
+      "error2": "Nom obligatoire.",
+      "error3": "Adresse ligne 1 obligatoire.",
+      "error4": "Ville obligatoire.",
+      "error5": "Code postal obligatoire."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Désolé, on dirait bien que cette adresse e-mail n’est pas valide...",
+      "error1": "Veuillez saisir votre prénom",
+      "error2": "Veuillez saisir votre nom",
+      "error3": "Veuillez saisir votre ville de résidence",
+      "error4": "Veuillez saisir un code postal valide (ex. 12345)"
+    }
+  },
+  "HR": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 12345)"
+    }
+  },
+  "HU": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 1234)"
+    }
+  },
+  "IE": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. A11 A1A1)"
+    }
+  },
+  "IT": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "Inserisci una e-mail.",
+      "error1": "Inserisci un nome.",
+      "error2": "Inserisci un cognome.",
+      "error3": "Inserisci un indirizzo nella prima linea.",
+      "error4": "Inserisci una città.",
+      "error5": "Inserisci il codice postale."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Hey, questo non sembra un indirizzo e-mail",
+      "error1": "Inserisci il tuo nome",
+      "error2": "Inserisci il tuo cognome",
+      "error3": "Inserisci la tua città",
+      "error4": "Inserire un codice postale valido (ad es. 12345)"
+    }
+  },
+  "LT": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 1234)"
+    }
+  },
+  "LU": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Adresse e-mail obligatoire.",
+      "error1": "Prénom obligatoire.",
+      "error2": "Nom obligatoire.",
+      "error3": "Adresse ligne 1 obligatoire.",
+      "error4": "Ville obligatoire.",
+      "error5": "Région / Département obligatoire.",
+      "error6": "Code postal obligatoire."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Désolé, on dirait bien que cette adresse e-mail n’est pas valide...",
+      "error1": "Veuillez saisir votre prénom",
+      "error2": "Veuillez saisir votre nom",
+      "error3": "Veuillez saisir votre ville de résidence",
+      "error4": "Région / Département incorrect - doit respecter les règles de validation",
+      "error5": "Veuillez saisir un code postal valide (ex. 1234)"
+    }
+  },
+  "LU_DE": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "E-Mail ist erforderlich.",
+      "error1": "Vorname ist erforderlich.",
+      "error2": "Nachname ist erforderlich.",
+      "error3": "Adresszeile 1 ist erforderlich.",
+      "error4": "Stadt ist erforderlich.",
+      "error5": "Bundesland ist erforderlich.",
+      "error6": "Postleitzahl ist erforderlich."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, leider scheint das keine gültige E-Mail-Adresse zu sein",
+      "error1": "Bitte gib Deinen Vornamen ein",
+      "error2": "Bitte gib Deinen Nachnamen ein",
+      "error3": "Bitte gib Deine Stadt ein",
+      "error4": "Bundesland ungültig - muss den Validierungsregeln entsprechen",
+      "error5": "Bitte geben Sie eine gültige Postleitzahl ein (z. B. 1234)"
+    }
+  },
+  "LV": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 1234)"
+    }
+  },
+  "NL": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "E-mail is verplicht.",
+      "error1": "Voornaam is verplicht.",
+      "error2": "Achternaam is verplicht.",
+      "error3": "Straat is verplicht.",
+      "error4": "Huisnummer is verplicht.",
+      "error5": "Plaats is verplicht.",
+      "error6": "Postcode is verplicht."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Sorry, dit is geen geldig e-mailadres",
+      "error1": "Voer je voornaam in",
+      "error2": "Voer je achternaam in",
+      "error3": "Voer je woonplaats in",
+      "error4": "Voer een geldige postcode in (bijv. 1111 AB)"
+    }
+  },
+  "NL_EN": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "House number is required.",
+      "error5": "Town/City is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Please enter a valid postcode (e.g. 1111 AB)"
+    }
+  },
+  "PL": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "E-mail jest wymagany.",
+      "error1": "Imię jest wymagane.",
+      "error2": "Nazwisko jest wymagane.",
+      "error3": "Adres 1 jest wymagany.",
+      "error4": "Miejscowość jest wymagana.",
+      "error5": "Kod pocztowy jest wymagany."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Przepraszamy, to nie wygląda jak adres e-mail",
+      "error1": "Podaj swoje imię",
+      "error2": "Podaj swoje nazwisko",
+      "error3": "Podaj nazwę miejscowości/miasta",
+      "error4": "Nieprawidłowe województwo – musi spełniać zasady potwierdzenia",
+      "error5": "Wpisz prawidłowy kod pocztowy (np. 12-123)"
+    }
+  },
+  "PT": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 1234-567)"
+    }
+  },
+  "RO": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Postcode is required.",
+      "error5": "Town/City is required."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please enter a valid postcode (e.g. 123456)",
+      "error4": "Please fill in your town/city"
+    }
+  },
+  "SE": {
+    "mandatoryFieldsCount": 7,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required.",
+      "error7": "Phone number is required."
+    },
+    "invalidErrorsCount": 6,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 1234)",
+      "error6": "Sorry, that doesn't look like a phone number"
+    }
+  },
+  "SI": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 12345)"
+    }
+  },
+  "SK": {
+    "mandatoryFieldsCount": 6,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Province / County / (Region / Area) is required.",
+      "error6": "Postcode is required."
+    },
+    "invalidErrorsCount": 5,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Invalid Province / County / (Region / Area) - must be within validation rules",
+      "error5": "Please enter a valid postcode (e.g. 123 45)"
+    }
+  },
+  "UK": {
+    "mandatoryFieldsCount": 5,
+    "mandatoryErrors": {
+      "error0": "Email is required.",
+      "error1": "First name is required.",
+      "error2": "Last name is required.",
+      "error3": "Address Line 1 is required.",
+      "error4": "Town/City is required.",
+      "error5": "Postcode is required."
+    },
+    "invalidErrorsCount": 4,
+    "invalidErrors": {
+      "error0": "Sorry, that doesn't look like an email address",
+      "error1": "Please fill in your first name",
+      "error2": "Please fill in your last name",
+      "error3": "Please fill in your town/city",
+      "error4": "Please enter a valid UK postode"
+    }
+  }
+}

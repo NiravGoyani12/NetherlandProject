@@ -1,0 +1,10 @@
+{
+  "drivers": {
+    "chrome": {
+      "version": "120-0-6099-71"
+    },
+    "firefox": {
+      "version": "0.29.1"
+    }
+  }
+}

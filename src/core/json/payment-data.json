@@ -1,0 +1,44 @@
+{
+  "creditCard": {
+    "bcmc": {
+      "creditCardNumber": "dublin",
+      "expiryDate": "amsterdam",
+      "cvv": "vienna",
+      "cardName": "vienna"
+    },
+    "amex": {
+      "creditCardNumber": "3700 0000 0100 018",
+      "expiryDate": "03/30",
+      "cvv": "7373",
+      "cardName": "amex test card"
+    },
+    "visa": {
+      "creditCardNumber": "4917 6100 0000 0000",
+      "expiryDate": "03/30",
+      "cvv": "737",
+      "cardName": "visa test card"
+    },
+    "masterCard": {
+      "creditCardNumber": "5454 5454 5454 5454",
+      "expiryDate": "03/30",
+      "cvv": "737",
+      "cardName": "master card test card"
+    },
+    "maestro": {
+      "creditCardNumber": "dublin",
+      "expiryDate": "amsterdam",
+      "cvv": "vienna",
+      "cardName": "vienna"
+    },
+    "dankort": {
+      "creditCardNumber": "dublin",
+      "expiryDate": "amsterdam",
+      "cvv": "vienna",
+      "cardName": "vienna"
+    }
+  },
+  "ratePay": {
+    "phoneNumber": "dublin",
+    "datOfBirth": "amsterdam"
+  }
+} 

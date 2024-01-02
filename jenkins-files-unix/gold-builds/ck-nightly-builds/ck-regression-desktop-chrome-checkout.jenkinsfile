@@ -1,0 +1,35 @@
+properties([
+        [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '10', numToKeepStr: '10']],
+        pipelineTriggers([
+            cron('10 23 * * 0-4')
+        ])
+])
+
+node {
+        
+        def microSoftTeamsWebhookUrl = "https://pvhcorp.webhook.office.com/webhookb2/124a2a6a-92a4-46c5-ad06-c2d44171a6cd@50ccd526-f6e9-4d12-8d35-391b59f63cd6/IncomingWebhook/707806cb9365446f8655772cb621e456/e3d8aeff-e054-4217-8f96-ab9401a7af4b"
+        def runner = "40"
+        def envStr = "Brand=ck DriverName=first-chrome-selenoid Platform=desktop DatabaseName=uat-prod Site=b2ceuup DefaultLocale=uk DriverPoolSize=${runner} SessionIdleTimeout=10"
+        
+        
+        Integer buildTimeoutMinutes = 120
+        def runTags = "--tags \"@FullRegression and @Desktop and @Chrome and @UnifiedCheckout and not (@ExcludeUat or @ExcludeCK or @Analyticsor)\""
+
+        stage('Check out') {
+                checkout scm
+        }
+        
+        def setupStages = load 'pipeline-scripts-unix/setup.groovy'
+        def testRunStates = load 'pipeline-scripts-unix/test-run.groovy'
+        def xrayStages = load 'pipeline-scripts-unix/reports/x-ray-report.groovy'
+        def msTeams = load 'pipeline-scripts-unix/reports/ms-teams-report.groovy'
+        def email = load 'pipeline-scripts-unix/reports/email-report.groovy'
+
+        setupStages.initProject(null, null)
+
+        setupStages.buildProject()
+
+        testRunStates.runIntegrationTest(runner, 'prod', runTags, envStr, true, microSoftTeamsWebhookUrl, false, true, true, "CK Desktop Chrome Checkout Regression - ", msTeams, email, buildTimeoutMinutes)
+
+        xrayStages.generateXrayReport(runTags, envStr, null, null)
+}

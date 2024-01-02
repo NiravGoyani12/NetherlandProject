@@ -1,0 +1,35 @@
+properties([
+        [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '10', numToKeepStr: '10']],
+        parameters([
+            choice(name: 'projectName', choices: ['', 'ecom-runner', 'eCom_Gold_Build_Runner', 'eCom_CK_Desktop_Chrome_Daily', 'eCom_TH_Desktop_Chrome_Daily', 'eCom_CK_Mobile_Chrome_Daily', 'eCom_TH_Mobile_Chrome_Daily', 'eCom_CK_Android_Chrome_Daily', 'eCom_TH_Android_Chrome_Daily', 'eCom_CK_Desktop_FireFox_Daily', 'eCom_TH_Desktop_FireFox_Daily'], description: 'Specify job name you want to send reports'),
+            string(name: 'buildNumber', description: 'Specify build number to send reports for', defaultValue: ''),
+            string(name: 'reportPrefix', description: 'Report Prefix', defaultValue: 'ECOM Regression -'),
+            string(name: 'msTeamsWebhookVar', description: 'Ms-Teams Webhook where you want to send reports', defaultValue: 'https://hooks.slack.com/services/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'),
+    ])
+])
+
+node('master') {
+        stage('Check out') {
+            checkout scm
+        }
+        
+        reportPrefix = reportPrefix + " "
+        def setupStages = load 'pipeline-scripts-unix/setup.groovy'
+        def msTeams = load 'pipeline-scripts-unix/reports/ms-teams-report.groovy'
+
+        setupStages.initProject(projectName, buildNumber)
+
+        stage('Send Report') {
+            script {
+                allure([
+                includeProperties: false,
+                jdk              : '',
+                properties       : [],
+                reportBuildPolicy: 'ALWAYS',
+                results          : [[path: 'allure-results']]
+                ])
+            }
+            msTeams.sendMicroSoftTeamsReport(msTeamsWebhookVar, reportPrefix)
+        }
+}
+

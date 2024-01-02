@@ -1,0 +1,31 @@
+properties([
+        [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5']],
+        pipelineTriggers([
+            cron('15 21 * * 0-4')
+        ])
+])
+
+node {
+        
+        def microSoftTeamsWebhookUrl = "https://pvhcorp.webhook.office.com/webhookb2/124a2a6a-92a4-46c5-ad06-c2d44171a6cd@50ccd526-f6e9-4d12-8d35-391b59f63cd6/IncomingWebhook/cc7ccf635e0b474c94b1cd77ee332d1a/96bb192c-3d67-4d80-b882-92210a27dd48"
+        def runner = "40"
+        def envStr = "Brand=th DriverName=forth-chrome-selenoid Platform=desktop DatabaseName=db0-live Site=devtestp DefaultLocale=uk DriverPoolSize=${runner} SessionIdleTimeout=20"
+        
+        Integer buildTimeoutMinutes = 150
+        def runTags = "--tags \"(@FullRegression or @Sprint) and @Desktop and @Chrome and @P1 and not (@ExcludeUat or @ExcludeTH or @ExcludeDB0 or @Analytics)\""
+
+        stage('Check out') {
+                checkout scm
+        }
+        
+        def setupStages = load 'pipeline-scripts-unix/setup.groovy'
+        def testRunStates = load 'pipeline-scripts-unix/test-run.groovy'
+        def msTeams = load 'pipeline-scripts-unix/reports/ms-teams-report.groovy'
+        def email = load 'pipeline-scripts-unix/reports/email-report.groovy'
+
+        setupStages.initProject(null, null)
+
+        setupStages.buildProject()
+
+        testRunStates.runIntegrationTest(runner, 'prod', runTags, envStr, true, microSoftTeamsWebhookUrl, false, true, true, "QA - P1 - TH Desktop Chrome Regression - ", msTeams, email, buildTimeoutMinutes)
+}

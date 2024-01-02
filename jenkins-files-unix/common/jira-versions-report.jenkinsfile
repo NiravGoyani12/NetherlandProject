@@ -1,0 +1,26 @@
+properties([
+        [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '2']],
+        pipelineTriggers([
+        	cron('5 9 * * 2')
+        ])
+])
+
+node('master') {
+        def msTeamsWebhookUrl = "https://pvhcorp.webhook.office.com/webhookb2/6e99a471-65a8-4b4e-b1f7-5e444e46b0cd@50ccd526-f6e9-4d12-8d35-391b59f63cd6/IncomingWebhook/da76bbd111b84a62acda2d7f85c97821/96bb192c-3d67-4d80-b882-92210a27dd48"
+
+        stage('Check out') {
+                checkout scm
+        }
+        
+        def setupStages = load 'pipeline-scripts-unix/setup.groovy'
+        def jiraReportStages = load 'pipeline-scripts-unix/reports/jira-report.groovy'
+
+        setupStages.initProject(null, null)
+
+        setupStages.buildProject()
+
+        jiraReportStages.generateIssueJson()
+
+        jiraReportStages.generateVersionIssueReport('CK', msTeamsWebhookUrl)
+        jiraReportStages.generateVersionIssueReport('TH', msTeamsWebhookUrl)
+}

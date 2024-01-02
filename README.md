@@ -1,93 +1,134 @@
-# netherlandproject
+# E2E Test Framework for E-COM
 
+## Before everything
+Before you start use this project or contribute this project, **PLEASE READ OUR STANDARDS**: [STANDARD](./docs/standards.md)
 
+> This project is based on W3C protocl and Appium, notice that Appium protocol only works with real device, but not Chrome-Simulator!
 
-## Getting started
+## Our Coverage
+![alt text](/docs/img/coverage.png)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Our automation service has covered as above work flow by different dedicated business team automation mates. The order processing is broken in our current automation framework.  We cannot handle the order processing. In other words, EER test will be very unstable, since its dependency is broken in our project. It's already wrote down in our technical road map. 
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Docs
+### Processes 
+* [Daily Work Process](./docs/daily-work.md)
+* [Standards](./docs/standards.md)
+* [Npm audit](./docs/npm-audit-docs.md)
 
-## Add your files
+### Framework
+* [Page Object](./docs/page-object.md)
+* [Page Object Strategy](./docs/page-object-strategy.md)
+* [Tech - Find Element](./docs/find-element.md)
+* [Jira+Xray integration](./docs/jira-integration.md)
+* [Statistics Report](./docs/excel-reports.md)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### Data
+* [Data Driven Test](./docs/data-driven.md)
+* [DB Integration](./docs/product.md)
+* [Data Source of Pages](./docs/data-for-page.md)
 
+### Tags
+* [Funtional tags](./docs/functional-tags.md)
+* [Tag Format](./docs/tags-format.md)
+
+### CI/CD
+* [CI Configuration](./docs/ci.md)
+* [CI Regression and Reporting Schedule](./docs/nightly-regression.md)
+* [Rerun mechanism](./docs/rerun-mechanism.md)
+* [Build Timeout Mechanism](./docs/build-timeout.md)
+* [Send Reports Pipeline](./docs/send-reports-pipeline.md)
+
+### Additional Set-up / Troubleshooting
+* [Windows](./docs/windows-setup.md)
+* [Safari](./docs/safari-local.md)
+
+### How To
+* [Run Full Regression/RC Tests on Safari Local](./docs/run-safari.md)
+* [Generate excel file for scenario reporting](./docs/how-to-generate-report.md)
+* [Use Browserstack](./docs/use-browserstack.md)
+* [Get Category ID for PLP](./docs/get-category-id.md)
+* [Add slack messages](./docs/slack-integration.md)
+
+### Contribution
+* Java Runtime is required (Recommended Version: JDK 8 or higher)
+* Install [Visual Studio Code](https://code.visualstudio.com/download)
+* Install [nodist (Windows)](https://github.com/nullivex/nodist) or [nvm (Macbook)](https://github.com/nvm-sh/nvm)
+
+### Config GIT in Windows
+```bash
+# Disable CRLF (if you are in windows)
+git config --global core.autocrlf false
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/resourcewisecounslancy/netherlandproject.git
-git branch -M main
-git push -uf origin main
+
+### How to setup
+```bash
+# Install proper version of node (Macbook using nvm)
+nvm install
+
+# Set proper version of node (Windows using nodist)
+# Important Note: Check .nvmrc for correct version! nodist does not currently support use of .nvmrc (https://github.com/nullivex/nodist/issues/194)
+nodist 14.16.0
+
+# Use your PVH username and password
+npm login --registry=https://nexus.tools.eu.pvh.cloud/repository/eu-mobileqa-npm/
+
+# download dependencies
+npm ci
 ```
 
-## Integrate with your tools
+### Run test locally with debug mode
+```bash
+# Prepare/Install Selenium Drivers and Selenium Server JAR and get latest chromedriver from chromeDriver folder based on os
+npm run selenium-install-mac
+npm run selenium-install-windows
+# or alternatively you can use
+NODE_TLS_REJECT_UNAUTHORIZED=0 ./node_modules/.bin/selenium-standalone install --config=./selenium.json
 
-- [ ] [Set up project integrations](https://gitlab.com/resourcewisecounslancy/netherlandproject/-/settings/integrations)
+# Start Selenium
+npm run selenium-start
 
-## Collaborate with your team
+#Run test which has @torun locally
+For TH: 
+npm run debug 
+npm run debug-mobile
+For CK: 
+npm run ck-debug 
+npm run ck-debug-mobile
+```
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
 
-## Test and Deploy
+### Run test in prod mode with scenario parallel
+```
+#Run test in jenkins in parallel
+npm run build
+npm run prod
+```
 
-Use the built-in continuous integration in GitLab.
+### Environment Variable
+* Brand: th, ck (default=th)
+* DriverName: local-chrome, remote-chrome, remote-firefox (default=local-chrome)
+* DatabaseName: uat-prod, prod-stag (default=uat-prod)
+* Site: b2ceuup, prod-stag (default=b2ceuup)
+* DefaultLocale: uk
+* SpaDefaultLocale: be
+* SpaDefaultLangCode: FR
+* NO_ALLURE: ture or false, if it's ture, then allure server will not start
+* CUCUMBER_PARALLEL: you can specify true to this value to enable DriverFactory (Shared session)
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### Driver Pool Environment Variable
+* DriverPoolSize: the pool size for active sessions (default is 16)
+* SessionMaxTest: the test can be executed in one session (default is 50)
+* SessionIdleTimeout: the session will be terminated after given seconds when it is not busy (default is 5 seconds)
 
-***
+### CI Environment Variable
+* QA_ENV_PROD_STAG_PASSWORD: only used when running against PROD-STAG
+* QA_ENV_JIRA_TOKEN: jira access token needed for xray/jira integration in the format: 'Basic ' + Buffer.from('<userName>:<password>').toString('base64');
+* IBM_DB_INSTALLER_URL : C:\DB2 (https://github.com/ibmdb/node-ibm_db)
+* NPM_TOKEN: the token created from user nxs-eu-mobileqa-npm
 
-# Editing this README
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+### Run in headless
+```
+CUCUMBER_PARALLEL=true NO_ALLURE=true Brand=th DriverName=local-chrome-headless DriverPoolSize=1  node ./build/runner.js -p prodci --tags "@torun"
+```

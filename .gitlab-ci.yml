@@ -1,0 +1,261 @@
+cache:
+  untracked: true
+  key: "$CI_COMMIT_SHORT_SHA"
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - test
+  - audit
+  - update-xray
+  - run-tests
+  - reporting
+
+variables:
+  DESKTOP_JIRA_ID: 
+    value: "DXX-123"
+    description: "Desktop Test Plan JIRA ID"
+  MOBILE_JIRA_ID:
+    value: "MXX-123"
+    description: "Mobile Test Plan JIRA ID"
+  PROJECT_KEY:
+    value: "UTR"
+    description: "Test Project Key"
+  FOLDER_PATH:
+    value: "NoPathSet"
+    description: "Test Repository Path (e.g. /Functional/Plp/Basic Flows"
+  FILES_DO_NOT_INCLUDE:
+    value: "features/ck/experience/plp/plp-basic-flows.feature,features/ck/experience/plp/plp-category-navigation.feature"
+    description: "List of feature files to exclude from the run"
+
+compile:
+  image: nikolaik/python-nodejs:python2.7-nodejs12
+  stage: build
+  only:
+    - merge_requests
+    - master
+  except:
+    - schedules
+    - triggers
+  script:
+    - npm config set unsafe-perm true
+    - npm install -g npm-cli-login
+    - npm-cli-login -u $NPM_USER -p $NPM_PASS -e QACommunity@pvh.com -r https://nexus.tools.eu.pvh.cloud/repository/eu-mobileqa-npm
+    - npm install
+    - npm run build
+  artifacts:
+    when: on_success
+    paths:
+      - build/
+  tags:
+    - docker
+  retry:
+    max: 2
+    when: runner_system_failure
+
+lint:
+  image: nikolaik/python-nodejs:python2.7-nodejs12
+  stage: test
+  script:
+    - npm run lint
+  tags:
+    - docker
+  only:
+    refs:
+      - merge_requests
+      - master
+    changes:
+      - "src/**/*.ts"
+      - "test/**/*.ts"
+  except:
+    - schedules
+    - triggers
+  retry:
+    max: 2
+    when: runner_system_failure
+
+feature-parse:
+  image: nikolaik/python-nodejs:python2.7-nodejs12
+  stage: test
+  script:
+    - npm run dryrunprod && npm run dryrunprod-ck
+  tags:
+    - docker
+  only:
+    refs:
+      - merge_requests
+      - master
+    changes:
+      - "features/**/*.feature"
+  except:
+    - schedules
+    - triggers
+  retry:
+    max: 2
+    when: runner_system_failure
+
+unit-test:
+  image: nikolaik/python-nodejs:python2.7-nodejs12
+  stage: test
+  only:
+    refs:
+      - merge_requests
+      - master
+    changes:
+      - "src/core/**/*.ts"
+      - "src/test/**/*.ts"
+      - "test/**/*.ts"
+  except:
+    - schedules
+    - triggers
+  before_script:
+    # Install Java Runtime
+    - apt-get update -o Acquire::https::deb.nodesource.com::Verify-Peer=false --allow-insecure-repositories
+    - apt-get install -y software-properties-common
+    - apt-get install -y openjdk-11-jre-headless
+    - java -version
+    # Look for chrome packages and delete them
+    - find . -name "google-chrome-stable_current_amd64.deb*"
+    - find . -name "google-chrome-stable_current_amd64.deb*" -exec rm -rf {} \;
+    # Install Chrome
+    - apt-get install -y fonts-liberation libappindicator3-1 libatk-bridge2.0-0 libatk1.0-0 libatspi2.0-0 libdrm2 libgbm1 libgtk-3-0 libx11-xcb1 libxcb-dri3-0 libxcomposite1 libxcursor1 libxdamage1 libxfixes3 libxrandr2 xdg-utils libu2f-udev libvulkan1
+    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - dpkg -i google-chrome-stable_current_amd64.deb; apt-get install -f
+    - find . -name "google-chrome-stable_current_amd64.deb*"
+  script:
+    - npm run test
+  tags:
+    - docker
+  retry:
+    max: 2
+    when: runner_system_failure
+
+.audit_summary:
+  only: [merge_requests]
+  image: nikolaik/python-nodejs:python2.7-nodejs12
+  stage: audit
+  before_script:
+    - apt-get update -o Acquire::https::deb.nodesource.com::Verify-Peer=false --allow-insecure-repositories
+    - apt-get install -y curl jq
+  script:
+    - npm install -g npm-cli-login
+    - npm-cli-login -u $NPM_USER -p $NPM_PASS -e QACommunity@pvh.com -r https://nexus.tools.eu.pvh.cloud/repository/eu-mobileqa-npm
+    - npm run audit-summary-gitlab
+    - npm run create-audit-gitlab-comment
+    - >
+      if [ -f npm_audit_report.log ] ; then   
+        echo "body=" > merge_request_discussion_thread
+        cat npm_audit_report.log >> merge_request_discussion_thread
+        DISCUSSIONID=`curl -v --request POST --header "Private-Token: ${E2E_TEST_GIT_ACCESS_TOKEN}" -d "@merge_request_discussion_thread" ${PVH_GITLAB_FULL_URL}/api/v4/projects/${CI_PROJECT_ID}/merge_requests/${CI_MERGE_REQUEST_IID}/discussions | jq .id | cut -d "\"" -f 2`
+        if [ ! -z $DISCUSSIONID ] ; then
+        curl -v --request PUT --header "PRIVATE-TOKEN: ${E2E_TEST_GIT_ACCESS_TOKEN}" ${PVH_GITLAB_FULL_URL}/api/v4/projects/${CI_PROJECT_ID}/merge_requests/${CI_MERGE_REQUEST_IID}/discussions/${DISCUSSIONID}?resolved=true
+        fi
+      fi
+  dependencies: []
+  tags:
+    - docker
+  retry:
+    max: 2
+    when: runner_system_failure
+
+.run-tests-template:
+  image: nikolaik/python-nodejs:python2.7-nodejs12
+  stage: run-tests
+  only: [schedules, triggers]
+  tags: [docker]
+  cache: []
+  before_script:
+    - npm install -g npm-cli-login
+    - npm-cli-login -u $NPM_USER -p $NPM_PASS -e QACommunity@pvh.com -r https://nexus.tools.eu.pvh.cloud/repository/eu-mobileqa-npm
+  script:
+    - if [[ -d "allure-results" ]]; then rm -Rf allure-results; fi
+    - npm ci
+    - npm run build
+    - if [[ "$DRIVERNAME" == *"browserstack"* ]]; then node ./build/startBrowserstack.js; fi
+    - TestName=${TEST_NAME} Brand=${BRAND} DriverName=${DRIVERNAME} Platform=${PLATFORM} DatabaseName=${DATABASENAME} Site=${SITE} DefaultLocale=${DEFAULTLOCALE} SpaDefaultLocale=${SPADEFAULTLOCALE} SpaDefaultLangCode=${SPADEFAULTLANGCODE} 
+      MultiLangDefaultLocale=${MULTILANGDEFAULTLOCALE} MultiLangDefaultLangCode=${MULTILANGDEFAULTLANGCODE} DriverPoolSize=${RUNNERS} SessionIdleTimeout=${SESSIONIDLETIMEOUT} CUCUMBER_PARALLEL="true" node ./build/runner.js -p prod --parallel ${RUNNERS} --tags "${RUN_TAGS}"
+  after_script:
+    - if [[ "$DRIVERNAME" == *"browserstack"* ]]; then node ./build/stopBrowserstack.js; fi
+  artifacts:
+    expire_in: 5 days
+    when: always
+    paths:
+      - allure-results/
+  retry:
+    max: 2
+    when: runner_system_failure
+      
+run-tests-nightly:
+  extends: .run-tests-template
+
+.send-results:
+  image: nikolaik/python-nodejs:python3.8-nodejs12
+  stage: reporting
+  only: [schedules, triggers]
+  needs: [run-tests-nightly]
+  tags: [docker]
+  allow_failure: true
+  cache: []
+  before_script:
+    - apt-get update -o Acquire::https::deb.nodesource.com::Verify-Peer=false --allow-insecure-repositories
+    - apt-get install -y curl jq zip openjdk-11-jre-headless
+    - npm install -g npm-cli-login
+    - npm install -g allure-commandline
+    - npm-cli-login -u $NPM_USER -p $NPM_PASS -e QACommunity@pvh.com -r https://nexus.tools.eu.pvh.cloud/repository/eu-mobileqa-npm
+    - pip install -r scripts/requirements.txt -v
+  script:
+    - allure generate
+    - export GITLAB_REPORT_URL="https://eumobile.pages.pvhcorp.com/-/ecom-e2e-test/-/jobs/$CI_JOB_ID/artifacts/allure-report/index.html"
+    - python3 ./scripts/slack-report.py ${GITLAB_REPORT_URL}
+    - echo $REPORT_URL
+  artifacts:
+    expire_in: 5 days
+    when: always
+    paths:
+      - allure-report/
+  retry:
+    max: 2
+    when: runner_system_failure
+
+send-results-passed:
+  extends: .send-results
+  when: on_success
+  variables:
+    STATUS: PASSED
+
+send-results-failed:
+  extends: .send-results
+  when: on_failure
+  variables:
+    STATUS: FAILED
+
+update-xray:
+  image: nikolaik/python-nodejs:python3.9-nodejs14
+  stage: update-xray
+  cache: []
+  before_script:
+    - apt-get update -o Acquire::https::deb.nodesource.com::Verify-Peer=false --allow-insecure-repositories
+    - apt-get install -y curl jq zip openjdk-11-jre-headless
+    - pip install -r scripts/requirements.txt -v
+    - git config user.email QACommunity@pvh.com
+    - git config user.name QA Community
+  script:
+    - chmod +x ./scripts/upload-and-update.sh
+    - ./scripts/upload-and-update.sh
+  tags:
+    - docker
+  only:
+    refs:
+      - merge_requests
+      - master
+  when: manual
+  artifacts:
+    expire_in: 1 day
+    when: always
+    paths:
+      - "*.txt"
+      - "*.json"
+  except:
+    - schedules
+    - triggers

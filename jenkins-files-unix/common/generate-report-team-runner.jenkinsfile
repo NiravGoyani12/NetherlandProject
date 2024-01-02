@@ -1,0 +1,31 @@
+properties([
+        [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '10', numToKeepStr: '10']],
+        parameters([
+            choice(name: 'jobName', choices: ['', 'ecom-runner', 'ECOM_DB0_BROWSESEARCH_CK_P1', 'ECOM_DB0_BROWSESEARCH_TH_P1', 'CK_Browse_and_Search_Desktop_Chrome', 'CK_Browse_and_Search_Android_Chrome', 'TH_Browse_and_Search_Desktop_Chrome', 'TH_Browse_and_Search_Android_Chrome', 'GolbBuild_CK_Browse_and_Search_Desktop', 'GoldBuild_CK_Browse_and_Search_Android', 'GoldBuild_TH_Browse_and_Search_Desktop', 'GoldBuild_TH_Browse_and_Search_Android'],  description: 'Specify job name you want extract team report'),
+            string(name: 'buildNumber', description: 'Specify build number to get the reports from above job', defaultValue: ''),
+            string(name: 'teamTag', description: 'Product team acronym like ..: @EEI ', defaultValue: '@EEI'),
+            // string(name: 'msTeamsWebhookVar', description: 'Ms-Teams Webhook where you want to send reports', defaultValue: 'https://hooks.slack.com/services/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'),
+    ])
+])
+
+node {
+        def msTeamsWebhookUrl = "https://hooks.slack.com/services/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"
+        def jobNameToInclude = [jobName]
+        def tagsToInclude = [teamTag]
+
+        stage('Clean up') {
+                deleteDir()
+        }
+        
+        stage('Check out') {
+                checkout scm
+        }
+        
+        def stages = load 'pipeline-scripts-unix/reports/custom-reporter.groovy'
+        def msTeams = load 'pipeline-scripts-unix/reports/ms-teams-report.groovy'
+        def email = load 'pipeline-scripts-unix/reports/email-report.groovy'
+
+        stages.generateCustomReport(jobNameToInclude, tagsToInclude, false, false, msTeamsWebhookUrl, "generate-report-team-runner", msTeams, email)
+}
+
+

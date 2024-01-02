@@ -1,0 +1,15 @@
+  
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+    },
+    "exclude": [
+        "allure-results",
+        "build",
+        "features",
+        "node_modules",
+        "packages",
+        "test",
+        "test/**/*.ts"
+    ]
+  }

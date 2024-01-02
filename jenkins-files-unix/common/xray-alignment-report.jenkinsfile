@@ -1,0 +1,23 @@
+properties([
+        [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '21', numToKeepStr: '3']],
+        pipelineTriggers([
+        	cron('8 9 * * 3')
+        ])
+])
+
+node('master') {
+        def msTeamsWebhookUrl = "https://hooks.slack.com/services/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"
+
+        stage('Check out') {
+                checkout scm
+        }
+        
+        def setupStages = load 'pipeline-scripts-unix/setup.groovy'
+        def xrayStages = load 'pipeline-scripts-unix/reports/x-ray-report.groovy'
+
+        setupStages.initProject(null, null)
+
+        setupStages.buildProject()
+
+        xrayStages.generateXrayAlignmentReport(msTeamsWebhookUrl)
+}

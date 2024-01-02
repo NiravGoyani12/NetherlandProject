@@ -1,0 +1,183 @@
+/* groovylint-disable CompileStatic, NestedBlockDepth */
+properties([
+  [$class: 'BuildDiscarderProperty',
+    strategy: [$class: 'LogRotator',
+    artifactDaysToKeepStr: '',
+    artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5']],
+  parameters([
+    string(name: 'projectKey',
+      description: 'Project where the tests will be created in',
+      defaultValue: 'UTR'),
+    text(name: 'featureFileList',
+      defaultValue: 'features/ck/experience/plp/plp-wishlist.feature',
+      description: 'List of feature files to upload and update'),
+    booleanParam(name: 'newBranchBoolean',
+      defaultValue: true,
+      description: 'Create a new branch for your feature file changes'),
+    string(name: 'branchToUse',
+      description: 'Branch to use',
+      defaultValue: 'master'),
+    string(name: 'authorName',
+      description: 'Your Name for the git commit',
+      defaultValue: 'QA Community'),
+    string(name: 'authorEmail',
+      description: 'Your Email for the git commit',
+      defaultValue: 'QACommunity@pvh.com'),
+    string(name: 'desktopJiraId',
+      description: 'Test Plan JIRA ID for Desktop',
+      defaultValue: 'DXX-123'),
+    string(name: 'mobileJiraId',
+      description: 'Test Plan JIRA ID for Mobile',
+      defaultValue: 'MXX-123'),
+    booleanParam(name: 'linkToTestPlans',
+      defaultValue: true,
+      description: 'Link to test plans'),
+    string(name: 'folderPath',
+      description: 'Folder Path for Test Repository (e.g. /Functional/PLP',
+      defaultValue: 'NoPathSet'),
+  ])
+])
+
+node {
+  def projectKey = params.projectKey
+  List<String> featureFileList = Arrays.asList(params.featureFileList.split('\\s*,\\s*'))
+  def newBranchBoolean = params.newBranchBoolean
+  def branchToUse = params.branchToUse
+  def authorName = params.authorName
+  def authorEmail = params.authorEmail
+  def desktopJiraId = params.desktopJiraId
+  def mobileJiraId = params.mobileJiraId
+  def folderPath = params.folderPath
+  def authToken = env.GIT_TOKEN
+
+  stage('Clean Workspace') {
+    cleanWs()
+  }
+  stage('Checkout Branch') {
+    try {
+      checkout([$class: 'GitSCM',
+      branches: [[name: "${branchToUse}"]],
+      userRemoteConfigs: [
+        [name: 'origin',
+        url: "https://oauth:${authToken}@gitlab.tools.eu.pvh.cloud/eumobile/ecom-e2e-test.git",
+        refspec: "+refs/heads/${branchToUse}:refs/remotes/origin/${branchToUse}"]]])
+      if (newBranchBoolean) {
+        sh "git checkout -b jira-update-branch-${BUILD_NUMBER}"
+      } else {
+        if (branchToUse.trim().equalsIgnoreCase("master")) {
+          sh "git checkout -b jira-update-branch-${BUILD_NUMBER}"
+        } else {
+          sh "git checkout -b ${branchToUse} origin/${branchToUse}"
+        }
+      }
+    } catch (err) {
+      sh "echo ${err}"
+    }
+  }
+  stage('Python things') {
+    try {
+      sh 'pip install -r scripts/requirements.txt -v'
+    } catch (err) {
+      sh "echo ${err}"
+    }
+  }
+  stage('Update TMS Tags') {
+    withCredentials([string(credentialsId: 'CLIENT_ID', variable: 'QA_CLIENT_ID'), string(credentialsId: 'CLIENT_SECRET', variable: 'QA_CLIENT_SEC')]) {
+      env.QA_ENV_JIRA_BEARER_TOKEN = 'Bearer ' + sh(returnStdout: true, script: './scripts/generate-token.sh').trim()
+      sh "echo Clean up json files"
+      sh "chmod +x ./scripts/clean_json_files.sh"
+      sh "./scripts/clean_json_files.sh"
+      def file_count = 1
+      featureFileList.each { featureFile ->
+        try {
+          sh "echo Uploading: ${featureFile}"
+          sh(script: '''
+            set +e
+            rm features.zip 2>/dev/null
+          ''', returnStatus: true)
+          zip zipFile: "features.zip", dir: "${WORKSPACE}", archive: false, glob: "${featureFile}"
+          sh "python3 scripts/upload-feature-file.py ${featureFile} ${projectKey} ${file_count}"
+        } catch (err) {
+          sh "echo There was an error when uploading ${featureFile}"
+          sh "echo ${err}"
+        }
+        try {
+          sh "echo Adding Automated Labels"
+          sh "python3 scripts/add-automated-label.py ${file_count}"
+        } catch (err) {
+          sh "echo There was an error when adding automated label for uploaded tests in ${featureFile}"
+          sh "echo ${err}"
+        }
+        try {
+          sh "echo Storing new/updated TMS IDs for: ${featureFile}"
+          sh "python3 scripts/store-tms-ids.py ${file_count}"
+        } catch (err) {
+          sh "echo There was an error when storing TMS IDs for ${featureFile}"
+          sh "echo ${err}"
+        }
+        try {
+          sh "echo Updating Feature File with new/updated TMS IDs: ${featureFile}"
+          sh "python3 scripts/update-feature-file-details-json.py ${featureFile} ${file_count}"
+        } catch (err) {
+          sh "echo There was an error when updating feature file: ${featureFile}"
+          sh "echo ${err}"
+        }
+        if (linkToTestPlans) {
+          try {
+            sh "echo Linking new/updated TMS IDs to test plan for feature file: ${featureFile}"
+            sh "python3 scripts/link-to-test-plan.py ${desktopJiraId} ${mobileJiraId} ${file_count}"
+          } catch (err) {
+            sh "echo There was an error when linking TMS IDs for ${featureFile}"
+            sh "echo ${err}"
+          }
+        }
+        try {
+          sh "echo Attempting to create folder: ${folderPath}"
+          sh "python3 scripts/create-folder.py ${projectKey} ${folderPath}"
+        } catch (err) {
+          sh "echo There was an error trying to create folder path ${folderPath}"
+          sh "echo ${err}"
+        }
+        try {
+          sh 'echo Moving created/updated tests folder'
+          sh "python3 scripts/move-to-folder.py ${folderPath} ${file_count}"
+        } catch (err) {
+          sh "echo There was an error trying to move tests to folder ${folderPath}"
+          sh "echo ${err}"
+        }
+        file_count += 1
+      }
+    }
+  }
+  stage('Push changes to git') {
+    try {
+      sh(script: '''
+        set +e
+        rm json-files.zip 2>/dev/null
+        ''', returnStatus: true)
+      zip zipFile: "json-files.zip", dir: "${WORKSPACE}", archive: false, glob: "*.json"
+      archiveArtifacts 'json-files.zip'
+      sh "Clean up zip and JSON files..."
+      sh(script: '''
+        set +e
+        rm features.zip 2>/dev/null
+        ''', returnStatus: true)
+      sh "./scripts/clean_json_files.sh"
+      sh "git config user.email ${authorEmail}"
+      sh "git config user.name ${authorName}"
+      sh 'git add .'
+      sh "git commit -m 'Updated files from: https://10.34.14.54/job/${JOB_NAME}/${BUILD_NUMBER}'"
+      if (newBranchBoolean) {
+        sh "git push --set-upstream origin jira-update-branch-${BUILD_NUMBER}"
+      } else {
+        if (branchToUse.trim().equalsIgnoreCase("master")) {
+          sh "git push --set-upstream origin jira-update-branch-${BUILD_NUMBER}"
+        } else {
+          sh "git push --set-upstream origin ${branchToUse}"
+        }
+      }
+    } catch (err) {
+      sh "echo ${err}"
+    }
+  }
+}

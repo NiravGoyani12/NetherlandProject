@@ -1,0 +1,2168 @@
+{
+  "brand": "th",
+  "base": {
+    "site": "devtestp",
+    "defaultLocale": "uk",
+    "spaDefaultLocale": "de",
+    "spaDefaultLangCode": "default",
+    "multiLangDefaultLocale": "de",
+    "multiLangDefaultLangCode": "EN",
+    "mainRedirectPage": "wlp",
+    "platform": "desktop",
+    "databaseName": "db0-live",
+    "driverName": "local-chrome",
+    "xoDefaultLocale": "es"
+  },
+  "ck": {
+    "mainRedirectPage": "glp",
+    "fhUsername": "pvh_ck_eu",
+    "fhPassword": "DONTfNoQNACm/mHcbsKYq9h4+5XrXwYfWiXJUsgBB4s=",
+    "defaultLocale": "uk",
+    "peeriusDefaultLocale": "pt",
+    "xoDefaultLocale": "fr",
+    "spaDefaultLocale": "fr"
+  },
+  "th": {
+    "defaultLocale": "uk",
+    "fhUsername": "pvh_th_eu",
+    "fhPassword": "b2k5bGGczaVTttMa2EwJS2wfe4CVVS4cfh5O3aMpVm8=",
+    "mainRedirectPage": "search-plp",
+    "xoDefaultLocale": "es",
+    "spaDefaultLocale": "fr",
+    "spaDefaultLangCode": "default"
+  },
+  "databases": {
+    "uat-prod": {
+      "DATABASE": "live",
+      "HOSTNAME": "uat-db2-2.stg.b2cecom.eu.pvh.cloud",
+      "PORT": 50001,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "65lTg8Lg"
+    },
+    "uat-stag": {
+      "DATABASE": "auth",
+      "HOSTNAME": "uat-db2-2.stg.b2cecom.eu.pvh.cloud",
+      "PORT": 50002,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "65lTg8Lg"
+    },
+    "systest-prod": {
+      "DATABASE": "live",
+      "HOSTNAME": " systest-db2-1.dev.b2cecom.eu.pvh.cloud",
+      "PORT": 50001,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "ol1hZnE3p6Oz2xjU"
+    },
+    "systest-stag": {
+      "DATABASE": "auth",
+      "HOSTNAME": " systest-db2-1.dev.b2cecom.eu.pvh.cloud",
+      "PORT": 50002,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "ol1hZnE3p6Oz2xjU"
+    },
+    "db1-live": {
+      "DATABASE": "live",
+      "HOSTNAME": "db1-db2-1.dev.b2cecom.eu.pvh.cloud",
+      "PORT": 50001,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "8HSx6dtB1WlInuJc"
+    },
+    "db1-stag": {
+      "DATABASE": "auth",
+      "HOSTNAME": "db1-db2-1.dev.b2cecom.eu.pvh.cloud",
+      "PORT": 50002,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "8HSx6dtB1WlInuJc"
+    },
+    "db0-live": {
+      "DATABASE": "live",
+      "HOSTNAME": "db0-db2-1.dev.b2cecom.eu.pvh.cloud",
+      "PORT": 50001,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "FgNOnwTV5hZMlh2d"
+    },
+    "db0-stag": {
+      "DATABASE": "auth",
+      "HOSTNAME": "db0-db2-1.dev.b2cecom.eu.pvh.cloud",
+      "PORT": 50002,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "FgNOnwTV5hZMlh2d"
+    },
+    "prod-stag": {
+      "DATABASE": "auth",
+      "HOSTNAME": "prod-db2-1.prd.b2cecom.eu.pvh.cloud",
+      "PORT": 50002,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "QA_ENV_V9_PROD_STAG_PASSWORD"
+    },
+    "sit-prod": {
+      "DATABASE": "live",
+      "HOSTNAME": "sit-db2-1.stg.b2cecom.eu.pvh.cloud",
+      "PORT": 50001,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "5cABipZ5Y4swJXxZ"
+    },
+    "sit-stag": {
+      "DATABASE": "auth",
+      "HOSTNAME": "sit-db2-1.stg.b2cecom.eu.pvh.cloud",
+      "PORT": 50002,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "5cABipZ5Y4swJXxZ"
+    },
+    "preprod-live": {
+      "DATABASE": "live",
+      "HOSTNAME": "preprod-db2-2.stg.b2cecom.eu.pvh.cloud",
+      "PORT": 50001,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "bkW3kcFZqkm03xaO"
+    },
+    "preprod-stag": {
+      "DATABASE": "auth",
+      "HOSTNAME": "preprod-db2-2.stg.b2cecom.eu.pvh.cloud",
+      "PORT": 50002,
+      "PROTOCOL": "TCPIP",
+      "UID": "pvhtest",
+      "PWD": "bkW3kcFZqkm03xaO"
+    }
+  },
+  "drivers": {
+    "local-chrome-headless": {
+      "options": {
+        "hostname": "localhost",
+        "port": 4444,
+        "protocol": "http",
+        "path": "/wd/hub",
+        "logLevel": "info",
+        "connectionRetryCount": 0,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "w3c": true,
+            "args": [
+              "--start-maximized",
+              "--ignore-certificate-errors",
+              "disable-dev-shm-usage",
+              "no-sandbox",
+              "test-type",
+              "headless",
+              "disable-gpu",
+              "--window-size=1440,1080"
+            ],
+            "perfLoggingPrefs": {
+              "enableNetwork": true
+            }
+          },
+          "goog:loggingPrefs": {
+            "performance": "ALL"
+          }
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "localhost-headless": {
+      "options": {
+        "hostname": "localhost",
+        "port": 4444,
+        "protocol": "http",
+        "path": "/wd/hub",
+        "logLevel": "error",
+        "connectionRetryCount": 0,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "w3c": true,
+            "args": [
+              "--start-maximized",
+              "--ignore-certificate-errors",
+              "disable-dev-shm-usage",
+              "no-sandbox",
+              "test-type",
+              "headless",
+              "disable-gpu",
+              "--window-size=1440,1080"
+            ],
+            "perfLoggingPrefs": {
+              "enableNetwork": true
+            }
+          },
+          "goog:loggingPrefs": {
+            "performance": "ALL"
+          }
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "localhost-mobile-headless": {
+      "options": {
+        "hostname": "localhost",
+        "port": 4444,
+        "protocol": "http",
+        "path": "/wd/hub",
+        "logLevel": "error",
+        "connectionRetryCount": 0,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--start-maximized",
+              "--ignore-certificate-errors",
+              "disable-dev-shm-usage",
+              "no-sandbox",
+              "test-type",
+              "headless",
+              "disable-gpu"
+            ],
+            "mobileEmulation": {
+              "deviceName": "iPhone X"
+            }
+          }
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "local-chrome": {
+      "options": {
+        "hostname": "localhost",
+        "port": 4444,
+        "protocol": "http",
+        "path": "/wd/hub",
+        "logLevel": "info",
+        "connectionRetryCount": 0,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "w3c": true,
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content",
+              "--window-size=1440,1080"
+            ],
+            "perfLoggingPrefs": {
+              "enableNetwork": true
+            }
+          },
+          "goog:loggingPrefs": {
+            "performance": "ALL"
+          }
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "local-firefox": {
+      "options": {
+        "hostname": "localhost",
+        "port": 4444,
+        "protocol": "http",
+        "path": "/wd/hub",
+        "logLevel": "info",
+        "connectionRetryCount": 0,
+        "capabilities": {
+          "browserName": "firefox",
+          "acceptInsecureCerts": true
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "local-mobile-simulator": {
+      "options": {
+        "hostname": "localhost",
+        "port": 4444,
+        "protocol": "http",
+        "path": "/wd/hub",
+        "logLevel": "info",
+        "connectionRetryCount": 0,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--start-maximized",
+              "--ignore-certificate-errors",
+              "no-sandbox",
+              "test-type"
+            ],
+            "mobileEmulation": {
+              "deviceName": "iPhone X"
+            }
+          }
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "local-tablet-simulator": {
+      "options": {
+        "hostname": "localhost",
+        "port": 4444,
+        "protocol": "http",
+        "path": "/wd/hub",
+        "logLevel": "info",
+        "connectionRetryCount": 0,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--start-maximized",
+              "--ignore-certificate-errors",
+              "no-sandbox",
+              "test-type"
+            ],
+            "mobileEmulation": {
+              "deviceName": "iPad"
+            }
+          }
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "remote-chrome": {
+      "options": {
+        "hostname": "10.34.14.54",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content",
+              "--window-size=1440,1080"
+            ],
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "first-chrome-selenoid": {
+      "options": {
+        "hostname": "10.34.14.56",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "selenoid:options": {
+            "enableVNC": true
+          },
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content",
+              "--window-size=1440,1080"
+            ],
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "second-chrome-selenoid": {
+      "options": {
+        "hostname": "10.34.14.57",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "selenoid:options": {
+            "enableVNC": true
+          },
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content",
+              "--window-size=1440,1080"
+            ],
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "third-chrome-selenoid": {
+      "options": {
+        "hostname": "10.34.14.58",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "selenoid:options": {
+            "enableVNC": true
+          },
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content",
+              "--window-size=1440,1080"
+            ],
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "forth-chrome-selenoid": {
+      "options": {
+        "hostname": "10.34.14.59",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content",
+              "--window-size=1440,1080"
+            ],
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "remote-firefox": {
+      "options": {
+        "hostname": "10.34.14.54",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "firefox",
+          "acceptInsecureCerts": true
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "remote-chrome-mobile-simulator": {
+      "options": {
+        "hostname": "10.34.14.54",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content"
+            ],
+            "mobileEmulation": {
+              "deviceName": "iPhone X"
+            },
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "first-chrome-selenoid-mobile-simulator": {
+      "options": {
+        "hostname": "10.34.14.56",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "selenoid:options": {
+            "enableVNC": true
+          },
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content"
+            ],
+            "mobileEmulation": {
+              "deviceName": "iPhone X"
+            },
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "second-chrome-selenoid-mobile-simulator": {
+      "options": {
+        "hostname": "10.34.14.57",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content"
+            ],
+            "mobileEmulation": {
+              "deviceName": "iPhone X"
+            },
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "third-chrome-selenoid-mobile-simulator": {
+      "options": {
+        "hostname": "10.34.14.58",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content"
+            ],
+            "mobileEmulation": {
+              "deviceName": "iPhone X"
+            },
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "forth-chrome-selenoid-mobile-simulator": {
+      "options": {
+        "hostname": "10.34.14.59",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content"
+            ],
+            "mobileEmulation": {
+              "deviceName": "iPhone X"
+            },
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "remote-chrome-tablet-simulator": {
+      "options": {
+        "hostname": "10.34.14.54",
+        "port": 4444,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content"
+            ],
+            "mobileEmulation": {
+              "deviceName": "iPad"
+            },
+            "extensions": []
+          }
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "remote-chrome-zalenium": {
+      "options": {
+        "hostname": "10.34.14.54",
+        "port": 8889,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content",
+              "--window-size=1440,1080"
+            ],
+            "extensions": []
+          },
+          "zal:recordVideo": false,
+          "zal:idleTimeout": 60,
+          "zal:testFileNameTemplate": "test_{testName}"
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "remote-chrome-mobile-simulator-zalenium": {
+      "options": {
+        "hostname": "10.34.14.54",
+        "port": 8889,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 5,
+        "capabilities": {
+          "browserName": "chrome",
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-gpu",
+              "--start-maximized",
+              "--disable-usb-keyboard-detect",
+              "--no-sandbox",
+              "--whitelisted-ips",
+              "--disable-dev-shm-usage",
+              "--allow-insecure-localhost",
+              "--disable-web-security",
+              "--ignore-certificate-errors",
+              "--allow-running-insecure-content"
+            ],
+            "mobileEmulation": {
+              "deviceName": "iPhone X"
+            },
+            "extensions": []
+          },
+          "zal:recordVideo": false,
+          "zal:idleTimeout": 60,
+          "zal:testFileNameTemplate": "test_{testName}"
+        },
+        "logLevel": "info",
+        "headers": {
+          "X-PVHQA": "BrowserLab-AWS"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "remote-android": {
+      "options": {
+        "hostname": "10.34.14.55",
+        "port": 80,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 3,
+        "connectionRetryTimeout": 90000,
+        "capabilities": {
+          "browserName": "chrome",
+          "platformName": "Android",
+          "appium:automationName": "UiAutomator2",
+          "appium:autoWebView": true,
+          "appium:noReset": true,
+          "appium:fullReset": false,
+          "appium:unicodeKeyboard": true,
+          "appium:resetKeyboard": true,
+          "appium:newCommandTimeout": 85,
+          "goog:chromeOptions": {
+            "args": [
+              "--disable-extensions",
+              "--start-maximized",
+              "--ignore-certificate-errors",
+              "no-sandbox",
+              "test-type"
+            ]
+          },
+          "zal:recordVideo": false,
+          "zal:idleTimeout": 90,
+          "lab:isSharedSessionTest": true
+        },
+        "logLevel": "info"
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 80000,
+        "script": 80000,
+        "elementExist": 30000,
+        "elementClickable": {
+          "timeout": 30000
+        },
+        "elementDisplayed": 30000,
+        "step": 400000
+      }
+    },
+    "remote-ios": {
+      "options": {
+        "hostname": "10.34.14.55",
+        "port": 80,
+        "path": "/wd/hub",
+        "protocol": "http",
+        "connectionRetryCount": 3,
+        "connectionRetryTimeout": 90000,
+        "capabilities": {
+          "browserName": "safari",
+          "platformName": "IOS",
+          "appium:deviceName": "IOS",
+          "appium:automationName": "XCUITest",
+          "appium:autoDismissAlerts": true,
+          "appium:autoWebview": true,
+          "appium:noReset": true,
+          "appium:fullReset": false,
+          "appium:newCommandTimeout": 85,
+          "appium:safariGarbageCollect": true,
+          "appium:usePrebuiltWDA": true,
+          "appium:derivedDataPath": "/Users/tester/wda",
+          "zal:recordVideo": false,
+          "zal:idleTimeout": 90,
+          "lab:isSharedSessionTest": true
+        },
+        "logLevel": "info"
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 10000,
+        "elementClickable": {
+          "timeout": 10000
+        },
+        "elementDisplayed": 10000,
+        "step": 300000
+      }
+    },
+    "local-safari": {
+      "options": {
+        "hostname": "localhost",
+        "port": 4444,
+        "protocol": "http",
+        "path": "/wd/hub",
+        "logLevel": "info",
+        "connectionRetryCount": 0,
+        "capabilities": {
+          "browserName": "safari"
+        }
+      },
+      "timeout": {
+        "implicit": 0,
+        "pageLoad": 60000,
+        "script": 60000,
+        "elementExist": 5000,
+        "elementClickable": {
+          "timeout": 5000
+        },
+        "elementDisplayed": 5000,
+        "step": 300000
+      }
+    },
+    "browserstack-ios": [
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "seleniumVersion": "3.141.59",
+              "osVersion": "15",
+              "deviceName": "iPhone 13 Pro",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose",
+              "appiumVersion": "1.21.0",
+              "safari": {
+                "enablePopups": "true"
+              }
+            },
+            "browserName": "Safari",
+            "appium:automationName": "XCUITest",
+            "appium:platformVersion": "15.0",
+            "appium:safariAllowPopups": "true",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "true"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "14",
+              "deviceName": "iPhone 12",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "appium:automationName": "XCUITest",
+            "appium:platformVersion": "14.0",
+            "appium:safariAllowPopups": "true",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "true"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "15",
+              "deviceName": "iPhone 13",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "appium:automationName": "XCUITest",
+            "appium:platformVersion": "15.0",
+            "appium:safariAllowPopups": "true",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "true"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "15",
+              "deviceName": "iPhone XS",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "appium:automationName": "XCUITest",
+            "appium:platformVersion": "15.0",
+            "appium:safariAllowPopups": "true",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "true"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "14",
+              "deviceName": "iPhone 11",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "appium:automationName": "XCUITest",
+            "appium:platformVersion": "14.0",
+            "appium:safariAllowPopups": "true",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "true"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "12",
+              "deviceName": "iPhone 8",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "appium:automationName": "XCUITest",
+            "appium:platformVersion": "12.0",
+            "appium:safariAllowPopups": "true",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "true"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      }
+    ],
+    "browserstack-ios-nativewebtap": [
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "seleniumVersion": "3.141.59",
+              "osVersion": "15",
+              "deviceName": "iPhone 11 Pro",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose",
+              "appiumVersion": "1.21.0",
+              "safari": {
+                "enablePopups": "true"
+              }
+            },
+            "browserName": "Safari",
+            "appium:automationName": "XCUITest",
+            "appium:platformVersion": "15.0",
+            "appium:safariAllowPopups": "true",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "true",
+            "appium:nativeWebTap": "true"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "14",
+              "deviceName": "iPhone 12",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "appium:automationName": "XCUITest",
+            "appium:platformVersion": "14.0",
+            "appium:safariAllowPopups": "true",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "true",
+            "appium:nativeWebTap": "true"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "12",
+              "deviceName": "iPhone 8",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "appium:automationName": "XCUITest",
+            "appium:platformVersion": "12.0",
+            "appium:safariAllowPopups": "true",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "true",
+            "appium:nativeWebTap": "true"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      }
+    ],
+    "browserstack-android": [
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "seleniumVersion": "3.141.59",
+              "osVersion": "12.0",
+              "deviceName": "Samsung Galaxy S22",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose",
+              "appiumVersion": "1.21.0",
+              "safari": {
+                "enablePopups": "true"
+              }
+            },
+            "browserName": "Chrome",
+            "platformName": "Android",
+            "appium:automationName": "UiAutomator2",
+            "appium:platformVersion": "12.0",
+            "appium:safariAllowPopups": "false",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "false"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "13.0",
+              "deviceName": "Google Pixel 7 Pro",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Chrome",
+            "platformName": "Android",
+            "appium:automationName": "UiAutomator2",
+            "appium:platformVersion": "13.0",
+            "appium:safariAllowPopups": "false",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "false"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "11.0",
+              "deviceName": "Samsung Galaxy A52",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Chrome",
+            "platformName": "Android",
+            "appium:automationName": "UiAutomator2",
+            "appium:platformVersion": "11.0",
+            "appium:safariAllowPopups": "false",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "false"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "13.0",
+              "deviceName": "Google Pixel 6 Pro",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Chrome",
+            "platformName": "Android",
+            "appium:automationName": "UiAutomator2",
+            "appium:platformVersion": "13.0",
+            "appium:safariAllowPopups": "false",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "false"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "12.0",
+              "deviceName": "Samsung Galaxy S22 Plus",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Chrome",
+            "platformName": "Android",
+            "appium:automationName": "UiAutomator2",
+            "appium:platformVersion": "12.0",
+            "appium:safariAllowPopups": "false",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "false"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "osVersion": "11.0",
+              "deviceName": "Samsung Galaxy M32",
+              "realMobile": "true",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "appiumLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Chrome",
+            "platformName": "Android",
+            "appium:automationName": "UiAutomator2",
+            "appium:platformVersion": "11.0",
+            "appium:safariAllowPopups": "false",
+            "appium:autoAcceptAlerts": "true",
+            "appium:safariOpenLinksInBackground": "false",
+            "appium:safariIgnoreFraudWarning": "false"
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 100000,
+          "script": 100000,
+          "elementExist": 20000,
+          "elementClickable": {
+            "timeout": 20000
+          },
+          "elementDisplayed": 20000,
+          "step": 300000
+        }
+      }
+    ],
+    "browserstack-safari": [
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "os": "OS X",
+              "osVersion": "Big Sur",
+              "resolution": "1920x1080",
+              "seleniumVersion": "3.141.59",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "browserVersion": "14.0",
+            "safari:options": {
+              "technologyPreview": true
+            }
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 60000,
+          "script": 60000,
+          "elementExist": 15000,
+          "elementClickable": {
+            "timeout": 15000
+          },
+          "elementDisplayed": 15000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "os": "OS X",
+              "osVersion": "Monterey",
+              "resolution": "1920x1080",
+              "seleniumVersion": "3.141.59",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "browserVersion": "15.3",
+            "safari:options": {
+              "technologyPreview": true
+            }
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 60000,
+          "script": 60000,
+          "elementExist": 15000,
+          "elementClickable": {
+            "timeout": 15000
+          },
+          "elementDisplayed": 15000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "os": "OS X",
+              "osVersion": "Catalina",
+              "resolution": "1920x1080",
+              "seleniumVersion": "3.141.59",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "browserVersion": "13.1",
+            "safari:options": {
+              "technologyPreview": true
+            }
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 60000,
+          "script": 60000,
+          "elementExist": 15000,
+          "elementClickable": {
+            "timeout": 15000
+          },
+          "elementDisplayed": 15000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "logLevel": "info",
+          "capabilities": {
+            "bstack:options": {
+              "os": "OS X",
+              "osVersion": "Mojave",
+              "resolution": "1920x1080",
+              "seleniumVersion": "3.141.59",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "browserName": "Safari",
+            "browserVersion": "12.1",
+            "safari:options": {
+              "technologyPreview": true
+            }
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 60000,
+          "script": 60000,
+          "elementExist": 15000,
+          "elementClickable": {
+            "timeout": 15000
+          },
+          "elementDisplayed": 15000,
+          "step": 300000
+        }
+      }
+    ],
+    "browserstack-chrome": [
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "capabilities": {
+            "bstack:options": {
+              "os": "Windows",
+              "osVersion": "10",
+              "browserName": "chrome",
+              "browserVersion": "latest",
+              "seleniumVersion": "3.141.59",
+              "resolution": "1920x1080",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "goog:chromeOptions": {
+              "args": [
+                "--disable-gpu",
+                "--start-maximized",
+                "--disable-usb-keyboard-detect",
+                "--no-sandbox",
+                "--whitelisted-ips",
+                "--disable-dev-shm-usage",
+                "--allow-insecure-localhost",
+                "--disable-web-security",
+                "--ignore-certificate-errors",
+                "--allow-running-insecure-content",
+                "--window-size=1920,1080"
+              ],
+              "extensions": []
+            }
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 60000,
+          "script": 60000,
+          "elementExist": 15000,
+          "elementClickable": {
+            "timeout": 15000
+          },
+          "elementDisplayed": 15000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "capabilities": {
+            "bstack:options": {
+              "os": "Windows",
+              "osVersion": "11",
+              "browserName": "chrome",
+              "browserVersion": "latest",
+              "seleniumVersion": "3.141.59",
+              "resolution": "1920x1080",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "goog:chromeOptions": {
+              "args": [
+                "--disable-gpu",
+                "--start-maximized",
+                "--disable-usb-keyboard-detect",
+                "--no-sandbox",
+                "--whitelisted-ips",
+                "--disable-dev-shm-usage",
+                "--allow-insecure-localhost",
+                "--disable-web-security",
+                "--ignore-certificate-errors",
+                "--allow-running-insecure-content",
+                "--window-size=1920,1080"
+              ],
+              "extensions": []
+            }
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 60000,
+          "script": 60000,
+          "elementExist": 15000,
+          "elementClickable": {
+            "timeout": 15000
+          },
+          "elementDisplayed": 15000,
+          "step": 300000
+        }
+      }
+    ],
+    "browserstack-firefox": [
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "capabilities": {
+            "bstack:options": {
+              "os": "Windows",
+              "osVersion": "10",
+              "browserName": "firefox",
+              "browserVersion": "latest",
+              "seleniumVersion": "3.141.59",
+              "resolution": "1920x1080",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "goog:chromeOptions": {
+              "args": [
+                "--disable-gpu",
+                "--start-maximized",
+                "--disable-usb-keyboard-detect",
+                "--no-sandbox",
+                "--whitelisted-ips",
+                "--disable-dev-shm-usage",
+                "--allow-insecure-localhost",
+                "--disable-web-security",
+                "--ignore-certificate-errors",
+                "--allow-running-insecure-content",
+                "--window-size=1920,1080"
+              ],
+              "extensions": []
+            }
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 60000,
+          "script": 60000,
+          "elementExist": 15000,
+          "elementClickable": {
+            "timeout": 15000
+          },
+          "elementDisplayed": 15000,
+          "step": 300000
+        }
+      },
+      {
+        "options": {
+          "hostname": "hub-cloud.browserstack.com",
+          "path": "/wd/hub",
+          "port": 80,
+          "protocol": "http",
+          "connectionRetryCount": 5,
+          "acceptSslCerts": "true",
+          "capabilities": {
+            "bstack:options": {
+              "os": "Windows",
+              "osVersion": "11",
+              "browserName": "firefox",
+              "browserVersion": "latest",
+              "seleniumVersion": "3.141.59",
+              "resolution": "1920x1080",
+              "local": "true",
+              "video": "true",
+              "debug": "true",
+              "networkLogs": "true",
+              "consoleLogs": "verbose"
+            },
+            "goog:chromeOptions": {
+              "args": [
+                "--disable-gpu",
+                "--start-maximized",
+                "--disable-usb-keyboard-detect",
+                "--no-sandbox",
+                "--whitelisted-ips",
+                "--disable-dev-shm-usage",
+                "--allow-insecure-localhost",
+                "--disable-web-security",
+                "--ignore-certificate-errors",
+                "--allow-running-insecure-content",
+                "--window-size=1920,1080"
+              ],
+              "extensions": []
+            }
+          }
+        },
+        "timeout": {
+          "implicit": 0,
+          "pageLoad": 60000,
+          "script": 60000,
+          "elementExist": 15000,
+          "elementClickable": {
+            "timeout": 15000
+          },
+          "elementDisplayed": 15000,
+          "step": 300000
+        }
+      }
+    ]
+  }
+}

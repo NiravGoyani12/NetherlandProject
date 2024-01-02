@@ -1,0 +1,38 @@
+{
+  "UPS": {
+    "at": "vienna",
+    "be": "ghent",
+    "ie": "dublin"
+  },
+  "CIS": {
+    "ie": "dublin",
+    "nl": "amsterdam",
+    "at": "vienna",
+    "uk": "liverpool"
+
+    
+  },
+  "PostNL": {
+    "nl": "1328DT"
+  },
+  "DHL": {
+    "de": {
+      "email":"pvh.sap_user@outlook.com",
+      "firstName":"first name",
+      "lastName":"last name",
+      "packStationPostNumber":"10179",
+      "packstationNumber":"181",
+      "postCode":"12345",
+      "city":"Berlin"
+    },
+    "at": {
+      "email":"pvh.sap_user@outlook.com",
+      "firstName":"first name",
+      "lastName":"last name",
+      "packStationPostNumber":"10179",
+      "packstationNumber":"181",
+      "postCode":"12345",
+      "city":"Vienna"
+    }
+  }
+} 

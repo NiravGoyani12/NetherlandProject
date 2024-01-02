@@ -1,0 +1,90 @@
+properties([
+        [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '10', numToKeepStr: '10']],
+        parameters([
+                choice(name: 'brand', choices: ['ck', 'th'], description: 'Brand'),
+	        choice(name: 'driverName', choices: ['browserstack-safari', 'browserstack-ios-dynamic','browserstack-ios', 'browserstack-safari-dynamic', 'browserstack-ios-nativewebtap', 'browserstack-ios-nativewebtap-dynamic', 'browserstack-chrome', 'browserstack-android', 'browserstack-android-dynamic', 'browserstack-firefox'], description: 'The driver will be used in test'),
+	        choice(name: 'platform', choices: ['desktop', 'mobile', 'tablet'], description: 'The driver will be used in test'),
+                string(name: 'testLocale', description: 'The default local against', defaultValue: 'uk'),
+                string(name: 'spaLocale', description: 'The default spa locale', defaultValue: 'be'),
+                string(name: 'spaLangCode', description: 'The default spa lang code. Change it to "default" if your spa locale is single language', defaultValue: 'default'),
+                choice(name: 'multiLangDefaultLocale', choices: ['ch', 'be', 'lu', 'ru', 'de', 'nl'], description: 'Default multi language locale'),
+                choice(name: 'multiLangDefaultLangCode', choices: ['FR', 'IT', 'DE', 'EN'], description: 'Secondary language for default multi language locale'),
+                string(name: 'xoDefaultLocale', description: 'The default xoDefaultLocale', defaultValue: 'es'),
+                choice(name: 'mainRedirectPage', choices: ['wlp', 'home-page', 'glp', 'plp', 'pdp', 'search-plp', 'shopping-bag', 'content-page', 'store-locator', 'performance-page'], description: 'Default redirect page'),
+                choice(name: 'testEnvironment', choices: ['b2ceuup', 'prod-stag', 'b2ceusp', 'b2ceuss', 'systestp', 'systests', 'devtestp1', 'devtests1', 'devtestp', 'devtests', 'b2ceuus', 'preprod-live', 'preprod-stag'], description: 'The product environment'),
+		choice(name: 'testDBConfigName', choices: ['uat-prod', 'db0-live', 'db0-stag', 'db1-live', 'db1-stag', 'systest-prod', 'systest-stag', 'sit-prod', 'sit-stag', 'prod-stag', 'uat-stag', 'preprod-live', 'preprod-stag'], description: 'DB Selection'),
+                string(name: 'runTags', description: 'Tags to include: Scope/Functionality + Device + Browser', defaultValue: '@FullRegression and @Desktop and @Safari'),
+                choice(name: 'runner', choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10','11', '12', '13', '14', '15', '16', '17', '18', '19', '20'], description: 'Count of runner'),
+                string(name: 'maxTestPerSession', description: 'The maximum number of tests per session', defaultValue: '50'),
+                string(name: 'poolSessionIdleTimeout', description: 'The timeout for idle session within pool, in seconds', defaultValue: '10'),
+                booleanParam(name: 'emailReport', defaultValue: false, description: 'Send email report'),
+                string(name: 'reportRecipients', description: 'Report Recipients', defaultValue: 'QACommunity@pvh.com'),
+                booleanParam(name: 'sendMsTeamsNotifications', defaultValue: true, description: 'Send Ms-Teams notifications'),
+                gitParameter(branch: '',
+                     branchFilter: 'origin/(.*)',
+                     defaultValue: 'master',
+                     description: 'Select remote branch to checkout. Default branch is master',
+                     name: 'BRANCH',
+                     quickFilterEnabled: true,
+                     selectedValue: 'NONE',
+                     sortMode: 'NONE',
+                     tagFilter: '*',
+                     type: 'PT_BRANCH')
+    ])
+])
+
+node('master') {
+        def msTeamsWebhookUrl = "https://pvhcorp.webhook.office.com/webhookb2/6e99a471-65a8-4b4e-b1f7-5e444e46b0cd@50ccd526-f6e9-4d12-8d35-391b59f63cd6/IncomingWebhook/da76bbd111b84a62acda2d7f85c97821/96bb192c-3d67-4d80-b882-92210a27dd48"
+        def otherMsTeamsWebhookUrl = "https://pvhcorp.webhook.office.com/webhookb2/6e99a471-65a8-4b4e-b1f7-5e444e46b0cd@50ccd526-f6e9-4d12-8d35-391b59f63cd6/IncomingWebhook/f2d8e47f3c2b4ad09ca762d7a1a434e9/96bb192c-3d67-4d80-b882-92210a27dd48"
+        def buildUrl = "https://10.34.14.54/job/ecom-runner-browserstack/"
+	def brand = params.brand ? params.brand.trim().replace(' ', '')  : "th"
+        def driverName = params.driverName ? params.driverName.trim().replace(' ', '')  : "browserstack-safari"
+        def platform = params.platform ? params.platform.trim().replace(' ', '') : "desktop"
+        def runTags = params.runTags ? params.runTags.trim() : "@FullRegression and @Desktop and @Safari"
+        def testEnvironment = params.testEnvironment ? params.testEnvironment.trim().replace(' ', '') : "b2ceuup"
+        def testDBConfigName = params.testDBConfigName ? params.testDBConfigName.trim().replace(' ', '') : "uat-prod"
+        def testLocale = params.testLocale ? params.testLocale.trim().replace(' ', '') : "uk"
+        def spaLocale = params.spaLocale ? params.spaLocale.trim().replace(' ', '') : "be"
+        def spaLangCode = params.spaLangCode ? params.spaLangCode.trim().replace(' ', '') : "default"
+        def multiLangDefaultLocale = params.multiLangDefaultLocale ? params.multiLangDefaultLocale.trim().replace(' ', '') : "ch"
+        def multiLangDefaultLangCode = params.multiLangDefaultLangCode ? params.multiLangDefaultLangCode.trim().replace(' ', '') : "FR"
+        def mainRedirectPage = params.mainRedirectPage ? params.mainRedirectPage.trim().replace(' ', '') : "wlp"
+	def runner = params.runner ? params.runner.trim().replace(' ', '') : "2"
+        def maxTestPerSession = params.maxTestPerSession ? params.maxTestPerSession.trim().replace(' ','') : "60"
+        def poolSessionIdleTimeout = params.poolSessionIdleTimeout ? params.poolSessionIdleTimeout.trim().replace(' ','') : "10"
+        def sendEmailReport = params.emailReport
+        def emailRecipients = params.reportRecipients ? params.reportRecipients.trim() : "QACommunity@pvh.com"
+        def sendMsTeamsNotifs = params.sendMsTeamsNotifications
+        def profile = "prod"
+        
+        def envStr = "TEST_NAME=ecom_runner_browserstack Brand=${brand} DriverName=${driverName} Platform=${platform} DatabaseName=${testDBConfigName} Site=${testEnvironment} DefaultLocale=${testLocale} SpaDefaultLocale=${spaLocale} SpaDefaultLangCode=${spaLangCode} MultiLangDefaultLocale=${multiLangDefaultLocale} MultiLangDefaultLangCode=${multiLangDefaultLangCode} MainRedirectPage=${mainRedirectPage} CUCUMBER_PARALLEL=true SessionIdleTimeout=${poolSessionIdleTimeout} SessionMaxTest=${maxTestPerSession}"
+        
+        def runnerTags = "--tags \"${runTags}\""
+
+        stage('Check out') {
+                checkout scm
+        }
+        
+        def setupStages = load 'pipeline-scripts-unix/setup.groovy'
+        def testRunStates = load 'pipeline-scripts-unix/test-run.groovy'
+        def xrayStages = load 'pipeline-scripts-unix/reports/x-ray-report.groovy'
+        def msTeams = load 'pipeline-scripts-unix/reports/ms-teams-report.groovy'
+        def email = load 'pipeline-scripts-unix/reports/email-report.groovy'
+
+        if (sendMsTeamsNotifs) {
+          msTeams.sendRunnersTaken(otherMsTeamsWebhookUrl, runner, platform, driverName, buildUrl)
+        }
+      
+        setupStages.initProject(null, null)
+        setupStages.lint()
+        setupStages.buildProject()
+
+        setupStages.startBrowserStackLocal(driverName)
+
+        testRunStates.runIntegrationTest(runner, profile, runnerTags, envStr, false, msTeamsWebhookUrl, sendEmailReport, true, true, "${brand.toUpperCase()} Safari Runner using browserstack - ", msTeams, email, 300, emailRecipients)
+        
+         if (sendMsTeamsNotifs) {
+          msTeams.sendAllureReportLink(otherMsTeamsWebhookUrl, buildUrl)
+        }
+}
+
